@@ -22,7 +22,7 @@ void Player_JumpAbility_Knux_Hook(void)
 {
     RSDK_THIS(Player);
 
-    if (self->animator.animationID == ANI_GLIDE) {
+    if (self->animator.animationID == ANI_GLIDE && self->velocity.y > 0) {
             self->velocity.y += 0x20000;
     }
 }
