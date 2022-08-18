@@ -453,13 +453,18 @@ extern ObjectPlayer *Player;
 void (*Player_Action_Jump)(EntityPlayer *entity);
 void (*Player_Action_Spindash)(void);
 void (*Player_JumpAbility_Knux)(void);
+void (*Player_HandleAirMovement)(void);
+void (*Player_State_Air)(void);
 void Player_JumpAbility_Knux_Hook(bool32 skip);
 
 // States
 void (*Player_State_Ground)(void);
+void (*Player_State_Spindash)(void);
 void (*Player_State_KnuxGlideDrop)(void);
-void (*Player_State_KnuxGlideLeft)(void);
-void (*Player_State_KnuxGlideRight)(void);
 void Player_State_KnuxGlideDrop_Hook(bool32 skip);
+void (*Player_State_KnuxGlideLeft)(void);
+void Player_State_KnuxGlideLeft_Hook(bool32 skip);
+void (*Player_State_KnuxGlideSlide)(void);
+void Player_State_KnuxGlideSlide_Hook(bool32 skip);
 void (*Player_Input_P2_AI)(void);
 #endif //! OBJ_PLAYER_H
