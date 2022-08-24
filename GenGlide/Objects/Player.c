@@ -1,7 +1,9 @@
 #include "Player.h"
 #include "GameAPI/Game.h"
+#include "Zone.h"
 
 ObjectPlayer *Player;
+ObjectZone *Zone;
 
 Hitbox Player_FallbackHitbox = { -10, -20, 10, 20 };
 Hitbox *Player_GetHitbox(EntityPlayer *player)
@@ -51,7 +53,7 @@ void Player_State_KnuxGlideSlide_Hook(void)
 void Player_State_KnuxGlideLeft_Hook(void)
 {
     RSDK_THIS(Player);
-    if (self->position.x <= 0x100000 && !self->jumpHold) {
+    if (self->position.x <= Zone->playerBoundsL[self->playerID] + 0x100000 && !self->jumpHold) {
         self->direction = FLIP_NONE;
     }
 }

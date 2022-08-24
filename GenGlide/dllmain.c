@@ -1,5 +1,6 @@
-#include "../GameAPI/C/GameAPI/Game.h"
+#include "../../GameAPI/C/GameAPI/Game.h"
 #include "Objects/Player.h"
+#include "Objects/Zone.h"
 
 #if RETRO_USE_MOD_LOADER
 DLLExport bool32 LinkModLogic(EngineInfo *info, const char *id);
@@ -19,6 +20,7 @@ Player_JumpAbility_Knux = Mod.GetPublicFunction(NULL, "Player_JumpAbility_Knux")
 Mod.RegisterStateHook(Player_JumpAbility_Knux, Player_JumpAbility_Knux_Hook, false);
 Player_State_KnuxGlideLeft = Mod.GetPublicFunction(NULL, "Player_State_KnuxGlideLeft");
 Mod.RegisterStateHook(Player_State_KnuxGlideLeft, Player_State_KnuxGlideLeft_Hook, false);
+MOD_REGISTER_OBJECT_HOOK(Zone);
 }
 
 #if RETRO_USE_MOD_LOADER
