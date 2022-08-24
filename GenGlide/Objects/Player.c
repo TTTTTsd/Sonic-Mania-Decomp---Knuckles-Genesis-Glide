@@ -3,6 +3,13 @@
 
 ObjectPlayer *Player;
 
+Hitbox Player_FallbackHitbox = { -10, -20, 10, 20 };
+Hitbox *Player_GetHitbox(EntityPlayer *player)
+{
+    Hitbox *playerHitbox = RSDK.GetHitbox(&player->animator, 0);
+    return playerHitbox ? playerHitbox : &Player_FallbackHitbox;
+}
+
 void Player_State_KnuxGlideDrop_Hook(void)
 {
     RSDK_THIS(Player);
@@ -44,7 +51,7 @@ void Player_State_KnuxGlideSlide_Hook(void)
 void Player_State_KnuxGlideLeft_Hook(void)
 {
     RSDK_THIS(Player);
-    if (abs(self->velocity.x) < 0x10000 && !self->jumpHold) {
+    if (self->position.x <= 0x100000 && !self->jumpHold) {
         self->direction = FLIP_NONE;
     }
 }
