@@ -1,4 +1,4 @@
-#include "../../GameAPI/C/GameAPI/Game.h"
+#include "../GameAPI/C/GameAPI/Game.h"
 #include "Objects/Player.h"
 #include "Objects/Zone.h"
 
